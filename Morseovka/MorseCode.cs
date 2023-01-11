@@ -8,7 +8,7 @@ namespace Morseovka
 {
     class MorseCode
     {
-        public Dictionary<char, string> _encodeDictionary = new Dictionary<char, string>()
+        public Dictionary<char, string> EncodeSlovnik = new Dictionary<char, string>()
     {
         {'a', ".-"},
         {'b', "-..."},
@@ -48,46 +48,44 @@ namespace Morseovka
         {'9', "----."}
     };
 
-        public Dictionary<string, char> _decodeDictionary = new Dictionary<string, char>();
+        public Dictionary<string, char> DekoderSlovnik = new Dictionary<string, char>();
 
         public MorseCode()
         {
-            foreach (var entry in _encodeDictionary)
+            foreach (var entry in EncodeSlovnik)
             {
-                _decodeDictionary.Add(entry.Value, entry.Key);
+                DekoderSlovnik.Add(entry.Value, entry.Key);
             }
         }
 
         public string Encode(string text)
         {
-            text = text.ToLower();
-            StringBuilder sb = new StringBuilder();
+            StringBuilder Final = new StringBuilder();
 
-            foreach (var c in text)
+            foreach (var x in text)
             {
-                if (_encodeDictionary.ContainsKey(c))
-                {
-                    sb.Append(_encodeDictionary[c] + " ");
+                if (EncodeSlovnik.ContainsKey(x))
+                { 
+                    { Final.Append(EncodeSlovnik[x] + " "); }
                 }
             }
 
-            return sb.ToString().Trim();
+            return Final.ToString();
         } 
 
-        public string Decode(string code)
+        public string Decode(string morseovka)
         {
-            StringBuilder sb = new StringBuilder();
-            var symbols = code.Split(' ');
-
-            foreach (var symbol in symbols)
+            StringBuilder Final = new StringBuilder();
+            var Moorseovka = morseovka.Split(' ');
+            foreach (var x in Moorseovka)
             {
-                if (_decodeDictionary.ContainsKey(symbol))
+                if (DekoderSlovnik.ContainsKey(x))
                 {
-                    sb.Append(_decodeDictionary[symbol]);
+                    Final.Append(DekoderSlovnik[x]);
                 }
             }
 
-            return sb.ToString();
+            return Final.ToString();
         }
     }
 
