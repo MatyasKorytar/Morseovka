@@ -8,8 +8,7 @@ namespace Morseovka
 {
     class MorseCode
     {
-        public Dictionary<char, string> 
-        _encodeDictionary = new Dictionary<char, string>()
+        public Dictionary<char, string> _encodeDictionary = new Dictionary<char, string>()
     {
         {'a', ".-"},
         {'b', "-..."},
@@ -49,12 +48,10 @@ namespace Morseovka
         {'9', "----."}
     };
 
-        public Dictionary<string, char> 
-        _decodeDictionary = new Dictionary<string, char>();
+        public Dictionary<string, char> _decodeDictionary = new Dictionary<string, char>();
 
         public MorseCode()
         {
-
             foreach (var entry in _encodeDictionary)
             {
                 _decodeDictionary.Add(entry.Value, entry.Key);
@@ -75,7 +72,7 @@ namespace Morseovka
             }
 
             return sb.ToString().Trim();
-        }
+        } 
 
         public string Decode(string code)
         {
